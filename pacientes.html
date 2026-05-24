@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacientes</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+
+        body{
+            background:#f4f6f9;
+        }
+
+        .navbar{
+            box-shadow:0px 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-tabela{
+            background:white;
+            padding:30px;
+            border-radius:20px;
+            box-shadow:0px 5px 15px rgba(0,0,0,0.1);
+        }
+
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold">
+            🦷 Clínica Odontológica
+        </a>
+
+        <div>
+
+            <a href="/dashboard" class="btn btn-light">
+                Dashboard
+            </a>
+
+            <a href="/pacientes" class="btn btn-light">
+                Pacientes
+            </a>
+
+            <a href="/consultas" class="btn btn-light">
+                Consultas
+            </a>
+
+            <a href="/logout" class="btn btn-danger">
+                Sair
+            </a>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container mt-5">
+
+    <div class="card-tabela">
+
+        <div class="d-flex justify-content-between mb-4">
+
+            <h2>Pacientes</h2>
+
+            <a href="/cadastrar_paciente" class="btn btn-primary">
+                Novo Paciente
+            </a>
+
+        </div>
+
+        <table class="table table-hover">
+
+            <thead class="table-primary">
+
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Ações</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for paciente in pacientes %}
+
+                <tr>
+
+                    <td>{{ paciente.id }}</td>
+                    <td>{{ paciente.nome }}</td>
+                    <td>{{ paciente.telefone }}</td>
+
+                    <td>
+
+                        <a
+                            href="/editar_paciente/{{ paciente.id }}"
+                            class="btn btn-warning btn-sm"
+                        >
+                            Editar
+                        </a>
+
+                        <a
+                            href="/excluir_paciente/{{ paciente.id }}"
+                            class="btn btn-danger btn-sm"
+                        >
+                            Excluir
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
